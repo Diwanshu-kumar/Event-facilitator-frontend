@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hall Booking Form</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="./input.css">
+</head>
+<body>
+    <nav class="zone blue sticky">
+        <ul class="main-nav">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="">Book Hall</a></li>
+            <li><a href="">Partners</a></li>
+            <li><a href="input.html">Add your Hall</a></li>
+            <li><a href="">About</a></li>
+            <li class="push"><a href="">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container1">
+        <h2>Fill the following details to add your venue on our platform</h2>
+        <form id="listingForm" class="mainForm">
+            <!-- <div class="form-group">
+                <label for="providerId">Provider ID:</label>
+                <input type="number" id="providerId" name="providerId" required>
+            </div> -->
+            <div class="form-group">
+                <label for="providerName">Provider Name:</label>
+                <input type="text" id="providerName" name="providerName" required>
+            </div>
+            <div class="form-group">
+                <label for="providerId">Provider Id:</label>
+                <input type="text" id="providerId" name="providerId" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hallName">Hall Name:</label>
+                <input type="text" id="hallName" name="hallName" required>
+            </div>
+            <div class="form-group">
+                <label for="noOfSeats">Number of Seats:</label>
+                <input type="number" id="noOfSeats" name="noOfSeats" required>
+            </div>
+            <div class="form-group">
+                <label for="parkingCapacity">Parking Capacity:</label>
+                <input type="number" id="parkingCapacity" name="parkingCapacity" required>
+            </div>
+            <div class="form-group">
+                <label for="acAvailable">AC Available:</label>
+                <input type="checkbox" id="acAvailable" name="acAvailable">
+            </div>
+            <div class="form-group">
+                <label for="djAvailable">DJ Available:</label>
+                <input type="checkbox" id="djAvailable" name="djAvailable">
+            </div>
+            <div class="form-group">
+                <label for="alcoholAvailable">Alcohol Available:</label>
+                <input type="checkbox" id="alcoholAvailable" name="alcoholAvailable">
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="Country">
+                    <option value="India">India</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label form="state">State:</label>
+                <select id="state_input" name="state_input" required></select>
+            </div>
+            <div class="form-group">
+                <label form="district_input">District:</label>
+                <select name="district_input" id="district_input" required></select>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="pincode">Pincode:</label>
+                <input type="number" id="pincode" name="pincode" required>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="text" id="contactNumber" name="contactNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <!-- <h4>Upload an Image</h4> -->
+            <div id="104" class="uploadForm">
+                <label for="image">Select image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+                <input type="button" class="imgUploadBtn" value="Upload Image">
+            </div><br>
+            <div id="show">
+                <img src="" alt="">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+            </div>
+            <!-- <div class="form-group">
+                <label for="imagePath">Image Path:</label>
+                <input type="text" id="imagePath" name="imagePath" required>
+            </div> -->
+
+            <input class ="form-submit" type="submit" value="Submit" class="button">
+            <input type="reset" value="Reset" class="button">
+        </form>
+    </div>
+    <script src="./dropDownStateDistrict.js"></script>
+    <script src="./script.js"></script>
+    <script src="./upload.js"></script>
+</body>
+</html>
