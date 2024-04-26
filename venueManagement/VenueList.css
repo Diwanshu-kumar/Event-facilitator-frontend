@@ -1,0 +1,56 @@
+.hall-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.hall {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.hall img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.hall-description {
+    flex-grow: 1;
+}
+
+.hall-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hall-buttons button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hall-buttons .modify {
+    background-color: #f0ad4e;
+    color: white;
+}
+
+.hall-buttons .delete {
+    background-color: #d9534f;
+    color: white;
+}
+
+.hall-buttons .details {
+    background-color: #5bc0de;
+    color: white;
+}
