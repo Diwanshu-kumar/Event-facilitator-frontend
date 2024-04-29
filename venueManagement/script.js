@@ -12,12 +12,13 @@ document.getElementById("listingForm").addEventListener("submit", function(event
     });
 
     jsonObject = {...jsonObject,  'imgSrc': img.src}
+    jsonObject = {...jsonObject, 'providerId':localStorage.getItem('id')}
 
     console.log(jsonObject)
 
     
     // Send data to API
-    const apiUrl = 'http://localhost:8080/api/v1/events';
+    const apiUrl = 'http://localhost:8080/api/v1/venue';
     fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -27,7 +28,7 @@ document.getElementById("listingForm").addEventListener("submit", function(event
     })
     .then(response => {
         if (response.ok) {
-            window.open('submit.html', '_blank');
+            window.open('submit.html', '_self');
             console.log(jsonObject);
             console.log('Form data submitted successfully.');
             // You can add any success handling logic here
@@ -42,3 +43,4 @@ document.getElementById("listingForm").addEventListener("submit", function(event
         // You can add any error handling logic here
     });
 });
+
