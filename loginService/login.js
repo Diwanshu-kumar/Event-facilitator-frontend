@@ -40,7 +40,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             window.alert("wrong id or password");
             return
         }else{
-            window.open("../index.html","_self");
+            window.open("../Home/index.html","_self");
         }
 
     })
