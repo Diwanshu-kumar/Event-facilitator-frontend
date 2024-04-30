@@ -2,7 +2,7 @@ function createHallDiv(json) {
     // Create the outer div with the class "hall"
     const hallDiv = document.createElement("div");
     hallDiv.className = "hall";
-  
+    hallDiv.id = json.id;
     // Create the image element with the specified source and alt text
     const img = document.createElement("img");
     img.src = json.imgSrc; // Image source from JSON
@@ -42,6 +42,10 @@ function createHallDiv(json) {
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete";
     deleteButton.textContent = "Delete";
+
+    deleteButton.addEventListener("click", function () {
+        deleteVenue(json.venueId); // Call deleteVenue with the venueId
+      });
   
     // Create the Details button with a link
     const detailsAnchor = document.createElement("a");
@@ -64,6 +68,30 @@ function createHallDiv(json) {
     return hallDiv; // Return the complete div
 }
 
+
+// Function to delete a venue by ID
+function deleteVenue(venueId) {
+    fetch(`http://localhost:8080/api/v1/venue/${venueId}`, {
+      method: "DELETE", // Send a DELETE request
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert(`Venue deleted successfully.`);
+  
+          // Optionally, remove the corresponding div from the DOM
+          const hallDiv = document.getElementById(`venue-${venueId}`);
+          if (hallDiv) {
+            hallDiv.remove(); // Remove the element from the DOM
+          }
+          window.open('../venueManagement/VenueList.html','_self');
+        } else {
+          console.error("Failed to delete venue:", response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error("Error while deleting venue:", error);
+      });
+  }
 function fetchAndDisplayVenues(providerId) {
     fetch(`http://localhost:8080/api/v1/venue/providerId/${providerId}`)
       .then((response) => response.json()) // Parse the JSON data
