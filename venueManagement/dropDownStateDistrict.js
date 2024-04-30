@@ -75,4 +75,4 @@ function populateStates(stateElementId, districtElementId) {
     }
 }
 
-populateStates("state_input", "district_input");
+populateStates("state", "district");

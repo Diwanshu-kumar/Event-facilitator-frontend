@@ -21,22 +21,13 @@
     <div class="container1">
         <h2>Update Hall details</h2>
         <form id="listingForm" class="mainForm">
-            <!-- <div class="form-group">
-                <label for="providerId">Provider ID:</label>
-                <input type="number" id="providerId" name="providerId" required>
-            </div> -->
             <div class="form-group">
-                <label for="providerName">Provider Name:</label>
-                <input type="text" id="providerName" name="providerName" required>
+                <label for="venueName">Venue Name:</label>
+                <input type="text" id="venueName" name="venueName" required>
             </div>
             <div class="form-group">
-                <label for="providerId">Provider Id:</label>
-                <input type="text" id="providerId" name="providerId" required>
-            </div>
-
-            <div class="form-group">
-                <label for="hallName">Hall Name:</label>
-                <input type="text" id="hallName" name="hallName" required>
+                <label for="managerName">Manager Name:</label>
+                <input type="text" id="managerName" name="managerName" required>
             </div>
             <div class="form-group">
                 <label for="noOfSeats">Number of Seats:</label>
@@ -60,17 +51,17 @@
             </div>
             <div class="form-group">
                 <label for="country">Country:</label>
-                <select id="Country">
+                <select id="country" name="country">
                     <option value="India">India</option>
                 </select>
             </div>
             <div class="form-group">
                 <label form="state">State:</label>
-                <select id="state_input" name="state_input" required></select>
+                <select id="state" name="state" required></select>
             </div>
             <div class="form-group">
-                <label form="district_input">District:</label>
-                <select name="district_input" id="district_input" required></select>
+                <label form="district">District:</label>
+                <select name="district" id="district" required></select>
             </div>
 
             <div class="form-group">
@@ -78,16 +69,16 @@
                 <input type="text" id="city" name="city" required>
             </div>
             <div class="form-group">
-                <label for="pincode">Pincode:</label>
-                <input type="number" id="pincode" name="pincode" required>
+                <label for="pinCode">Pincode:</label>
+                <input type="number" id="pinCode" name="pinCode" required>
             </div>
             <div class="form-group">
                 <label for="contactNumber">Contact Number:</label>
                 <input type="text" id="contactNumber" name="contactNumber" required>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="managerEmail">Manager Email:</label>
+                <input type="email" id="managerEmail" name="managerEmail" required>
             </div>
             <!-- <h4>Upload an Image</h4> -->
             <div id="104" class="uploadForm">
@@ -102,10 +93,6 @@
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="4" required></textarea>
             </div>
-            <!-- <div class="form-group">
-                <label for="imagePath">Image Path:</label>
-                <input type="text" id="imagePath" name="imagePath" required>
-            </div> -->
 
             <input class ="form-submit" type="submit" value="Update" class="button">
             
