@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //   sessionStorage.clear(); // Clear all session data
         
             // Redirect to the login page or another location
-          window.location.href = "./index.html"; // Redirect after logout
+          window.location.href = "../Home/index.html"; // Redirect after logout
         }
         logoutButton.addEventListener("click", handleLogout);
     }
