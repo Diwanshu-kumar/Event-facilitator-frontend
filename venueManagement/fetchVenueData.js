@@ -4,13 +4,13 @@ function createVenueCard(json) {
     div.className = "box zone";
   
     const anchor = document.createElement("a");
-    anchor.href = "../Home/details2.html"; // Default link
-  
+    anchor.href = `../Home/details2.html?venueId=${json.venueId}`; // Default link
     const img = document.createElement("img");
     img.src = json.imgSrc;
   
     const h2 = document.createElement("h2");
     h2.className = "short-padding";
+    h2.id = json.venueId;
     h2.textContent = json.venueName;
   
     const p = document.createElement("p");

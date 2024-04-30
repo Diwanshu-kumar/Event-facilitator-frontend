@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Venue Details</title>
+    <script src="details.js"></script> <!-- Link to your JavaScript file -->
+    <link rel="stylesheet" type="text/css" href="details.css"> <!-- Link to a CSS file for styling -->
 </head>
 <body>
-    <nav class="zone blue sticky">
-        <ul class="main-nav">
-            <li><a href="../Home/index.html">Home</a></li>
-            <li><a href="">Book Hall</a></li>
-            <li><a href="">Partners</a></li>
-            <li><a href="../venueManagement/input.html">Add your Venue</a></li>
-            <li><a href="">About</a></li>
-            <li id="loginLogout" class="push"><a href="../loginService/login.html">Login</a></li>
-    </ul>
-</nav>
-<section class="main-banner">
-    <img class="banner" src="../img/3.webp" alt="main-banner">
-    <div class="short-padding">
-    <h3 >#Hall Name</h3>
-    <h4 >
-        description
-    </h4>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit 
-        sequi impedit expedita nisi veniam ex nostrum totam blanditiis, sapiente repellat doloremque nihil nesciunt iure! Vel 
-        assumenda aspernatur accusantium eum quam!
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem illum a consequatur maxime voluptatem suscipit vel quae ipsa vitae assumenda eaque architecto cum ea perferendis explicabo, aperiam temporibus reprehenderit dolor.</p>
-    <H3>Amenities</H3>
-    <ul>
-        <li>AC : available</li>
-        <li>no of seats : 50-80</li>
-        <li>parking-capacity : 60</li>
-        <li>dj : available</li>
-        <li>alchohal : available</li>
-    </ul>
+    
+    <!-- Venue image -->
+    <img id="venueImage" src="" alt="Venue Image" style="max-width: 100%; height: auto;">
+    
+    <h1 id="title">Venue Details</h1>
+    <!-- Venue description -->
+    <p id="description">Description will be updated here.</p>
+
+    <!-- Additional venue information -->
+    <div id="venueInfo">
+        <h3>Amenities</h3>
+        <p id="acAvailable">AC Available: TBD</p>
+        <p id="djAvailable">DJ Available: TBD</p>
+        <p id="parkingCapacity">Parking Capacity: TBD</p>
+
+        <h3>Address</h3>
+        <p id="country">Country</p>
+        <p id="city">City: TBD</p>
+        <p id="district">District: TBD</p>
+        <p id="pinCode">Pin Code: TBD</p>
+
+        <h3>Contacts</h3>
+        <p id="contactNumber">Contact: TBD</p>
+        <p id="managerName">Manager: TBD</p>
+        <p id="managerEmail">Email: TBD</p>
+        <p id="price">Price: TBD</p>
     </div>
-</section>
 </body>
 </html>
