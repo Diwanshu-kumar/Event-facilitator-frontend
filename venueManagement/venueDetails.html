@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="venueDetails.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">VenueLister</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="listVenue.html">Venues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Providers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Venue Title -->
+        <div class="row mb-4">
+            <div class="col">
+                <h1 class="display-4" id="venueTitle">Grand Conference Hall</h1>
+                <p class="lead" id="venueLocation">Location: 1234 Elm Street, City, State, ZIP</p>
+            </div>
+        </div>
+
+        <!-- Image Carousel -->
+        <div id="venueCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner" id="imageCarousel">
+                <div class="carousel-item active">
+                    <img src="../img/1.webp" class="d-block w-100" alt="Venue Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/2.webp" class="d-block w-100" alt="Venue Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/3.webp" class="d-block w-100" alt="Venue Image 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#venueCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#venueCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Venue Details -->
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Description -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Venue Description</h5>
+                        <p class="card-text" id="description">
+                            This grand conference hall is perfect for corporate events, seminars, and large gatherings. The hall is equipped with state-of-the-art audio-visual equipment, high-speed internet, and comfortable seating arrangements. The spacious venue can accommodate up to 300 guests and offers flexible seating arrangements to suit your event needs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Amenities -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Amenities</h5>
+                        <ul class="list-group" id="amenities">
+                            <li class="list-group-item">Air Conditioning</li>
+                            <li class="list-group-item">Wi-Fi</li>
+                            <li class="list-group-item">Projector and Screen</li>
+                            <li class="list-group-item">Parking Facility</li>
+                            <li class="list-group-item">Catering Services Available</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Map & Booking Info -->
+            <div class="col-lg-4">
+                <!-- Google Map -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Location</h5>
+                        <div class="map-container mb-3">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.095155340523!2d-122.08424968469282!3d37.42199977982556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb735f3c0b7af%3A0xb8a4822d17d98b8b!2sGoogleplex!5e0!3m2!1sen!2sin!4v1621884519933!5m2!1sen!2sin"
+                                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <a href="#" class="btn btn-primary w-100">Get Directions</a>
+                    </div>
+                </div>
+
+                <!-- Booking Info -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Book This Venue</h5>
+                        <p class="card-text" id="venuePrice">Price: ₹50,000 per day</p>
+                        <a href="#" class="btn btn-success btn-lg w-100">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 bg-dark text-white">
+        <p>&copy; 2024 VenueLister. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script type="module" src="venueDetails.js"></script>
+</body>
+</html>
