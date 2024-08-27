@@ -113,10 +113,21 @@
 
                 <!-- Booking Info -->
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Book This Venue</h5>
-                        <p class="card-text" id="venuePrice">Price: ₹50,000 per day</p>
-                        <a href="#" class="btn btn-success btn-lg w-100">Book Now</a>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Book This Venue</h5>
+                        <!-- Date Range Selection -->
+                        <div class="mb-3">
+                            <label for="startDate" class="form-label">Start Date : </label>
+                            <input type="date" class="form-control" id="startDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="endDate" class="form-label">End Date : </label>
+                            <input type="date" class="form-control" id="endDate" required>
+                        </div>
+                        <div class="text-center">
+                            <p class="card-text" id="venuePrice">Price: ₹50,000 per day</p>
+                            <a href="#" class="btn btn-success btn-lg ">Book Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
