@@ -1,0 +1,26 @@
+.hero-section {
+    height: 75vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('img/5.png') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: none;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+}
