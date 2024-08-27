@@ -1,4 +1,4 @@
-import {baseUrl} from "../config.js";
+import {baseUrl} from "../generic-modules/config.js";
 
 const API_BASE_URL = baseUrl();
 
