@@ -23,7 +23,7 @@ const getVenueDetails = async (venueId) => {
     }
 }
 
-const setVenueDetails = async (venueDetails) => {
+const setVenueDetails = (venueDetails) => {
     document.getElementById("venueTitle").innerHTML = venueDetails.name;
     document.getElementById("venueLocation").innerHTML = venueDetails.address;
     document.getElementById("description").innerHTML = venueDetails.description;

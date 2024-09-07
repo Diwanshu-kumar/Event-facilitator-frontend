@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded",  async (event)=> {
     const venueFetchUrl = API_BASE_URL+"venues/venues";
     const venueList = await getVenueList(venueFetchUrl);
     displayVenues(venueList);
-    console.log("venueList", venueList);
+    // console.log("venueList", venueList);
 })
 
 const filterButton = document.getElementById("filterButton");
@@ -86,7 +86,7 @@ const getFilteredVenue = async (filteredVenueUrl, searchParameter) => {
     }
 };
 
-const displayVenues = (venueList) => {
+const displayVenues = async(venueList) => {
     let venueContainer = document.getElementById("venueContainer");
     for(const venue of venueList){
         let venueCard = document.createElement('div');
@@ -95,7 +95,7 @@ const displayVenues = (venueList) => {
         venueCard.innerHTML=
             `
                         <div class="card shadow-sm h-100">
-                            <img src=${getImageUrl(venue.img)} class="card-img-top" alt="Venue 1">
+                            <img src="" class="card-img-top" alt="image">
                             <div class="card-body">
                                 <a href="venueDetails.html?id=${venue.id}"><h5 class="card-title">${venue.name}</h5></a>
                                 <p class="card-text"><strong>Capacity:</strong> ${venue.capacity} people</p>
@@ -107,6 +107,35 @@ const displayVenues = (venueList) => {
         `
         venueContainer.appendChild(venueCard);
     }
+
+    // Now fetch the images and update the cards
+    for (const venue of venueList) {
+        const img = await getImageByVenue(venue.id);
+        const imgUrl =  getImageUrl(img);
+        const venueCard = document.getElementById(venue.id);
+
+        if (venueCard) {
+            const imgElement = venueCard.querySelector('.card-img-top');
+            if (imgElement) {
+                imgElement.src = imgUrl;
+            }
+        }
+    }
+}
+
+const getImageByVenue = async (venueId)=>{
+    const url = API_BASE_URL+"venues/resource/image?venueId="+venueId;
+
+    const response = await fetch(url,{
+        method: "GET",
+    });
+    if(response.ok){
+        const data = await response.json();
+        console.log(data);
+        console.log(typeof(data.data));
+        return data;
+    }
+    return "";
 }
 
 const getVenueList =async (url,searchFilter) => {
