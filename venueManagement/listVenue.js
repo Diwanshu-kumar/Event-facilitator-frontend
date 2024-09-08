@@ -21,14 +21,16 @@ document.addEventListener("DOMContentLoaded",  async (event)=> {
 })
 
 const filterButton = document.getElementById("filterButton");
-
+let searchData;
+let isFilterOn = false;
 filterButton.addEventListener("click", async (event) => {
     event.preventDefault();
-    const searchData = {
+    searchData = {
         "name" : document.getElementById("searchTitle").value,
         "type" : document.getElementById("filterCategory").value,
         "date" : document.getElementById("filterDate").value,
     }
+    isFilterOn = true;
 
     const filteredVenueUrl = API_BASE_URL+"venues/resource/search";
     const filteredVenueList  = await getFilteredVenue(filteredVenueUrl,searchData);
@@ -77,9 +79,10 @@ const getFilteredVenue = async (filteredVenueUrl, searchParameter) => {
     });
 
     if (response.ok) {
-        const venues = await response.json();
-        console.log(venues);
-        return venues;
+        const data = await response.json();
+        renderPagination(data.totalPages-1,data.pageable.pageNumber);
+        console.log(data);
+        return data.content;
     } else {
         alert("some error happened");
         return {}; // Or handle the error appropriately
@@ -88,6 +91,7 @@ const getFilteredVenue = async (filteredVenueUrl, searchParameter) => {
 
 const displayVenues = async(venueList) => {
     let venueContainer = document.getElementById("venueContainer");
+    venueContainer.innerHTML = "";
     for(const venue of venueList){
         let venueCard = document.createElement('div');
         venueCard.id = venue.id;
@@ -130,10 +134,7 @@ const getImageByVenue = async (venueId)=>{
         method: "GET",
     });
     if(response.ok){
-        const data = await response.json();
-        console.log(data);
-        console.log(typeof(data.data));
-        return data;
+        return await response.json();
     }
     return "";
 }
@@ -145,7 +146,10 @@ const getVenueList =async (url,searchFilter) => {
         body : searchFilter
     });
     if (response.ok) {
-        return await response.json();
+        const data = await response.json();
+        console.log(data);
+        renderPagination(data.totalPages-1,data.pageable.pageNumber);
+        return data.content;
     }else if(response.status === 404){
         alert('Venue Not Found');
     }else{
@@ -161,4 +165,105 @@ const getAmenities = (amenitiesAPIResponse)=>{
         amenitiesString  = amenitiesString + `${amenitiesString===""?"":", "}` + amenities.name;
     }
     return amenitiesString;
+}
+
+
+
+
+function renderPagination(totalPages, currentPage) {
+    const paginationContainer = document.querySelector('.pagination');
+
+    // Clear existing pagination
+    paginationContainer.innerHTML = '';
+
+    // Create "Previous" button
+    const prevItem = document.createElement('li');
+    prevItem.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+    prevItem.innerHTML = `<a class="page-link" href="#" tabindex="-1" ${currentPage === 1 ? 'aria-disabled="true"' : ''}>Previous</a>`;
+    prevItem.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage > 1) {
+            updateVenue(currentPage - 1);
+        }
+    });
+    paginationContainer.appendChild(prevItem);
+
+    // Helper function to add page items
+    function addPageItem(page, isCurrentPage) {
+        const pageItem = document.createElement('li');
+        pageItem.className = `page-item ${isCurrentPage ? 'active' : ''}`;
+        pageItem.innerHTML = `<a class="page-link" href="#">${page}</a>`;
+        pageItem.addEventListener('click', (e) => {
+            e.preventDefault();
+            updateVenue(page);
+        });
+        paginationContainer.appendChild(pageItem);
+    }
+
+    // Add first three pages
+    for (let i = 1; i <= Math.min(3, totalPages); i++) {
+        addPageItem(i, i === currentPage);
+    }
+
+    // Add ellipsis if needed
+    if (totalPages > 6) {
+        if (currentPage > 4) {
+            paginationContainer.appendChild(createEllipsis());
+        }
+        // if (currentPage < totalPages - 3) {
+        //     paginationContainer.appendChild(createEllipsis());
+        // }
+    }
+
+    // Add pages around current page
+    const start = Math.max(4, currentPage - 1);
+    const end = Math.min(totalPages - 3, currentPage + 1);
+
+    for (let i = start; i <= end; i++) {
+        addPageItem(i, i === currentPage);
+    }
+
+    // Add last three pages
+    if (totalPages > 3) {
+        if (currentPage < totalPages - 3) {
+            paginationContainer.appendChild(createEllipsis());
+        }
+        for (let i = Math.max(totalPages - 2, 1); i <= totalPages; i++) {
+            addPageItem(i, i === currentPage);
+        }
+    }
+
+    // Create "Next" button
+    const nextItem = document.createElement('li');
+    nextItem.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+    nextItem.innerHTML = `<a class="page-link" href="#">Next</a>`;
+    nextItem.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+            updateVenue(currentPage + 1);
+        }
+    });
+    paginationContainer.appendChild(nextItem);
+}
+
+function createEllipsis() {
+    const ellipsisItem = document.createElement('li');
+    ellipsisItem.className = 'page-item disabled';
+    ellipsisItem.innerHTML = '<span class="page-link">...</span>';
+    return ellipsisItem;
+}
+
+// Example function to handle page changes
+const updateVenue = async (pageNumber) =>{
+    console.log(pageNumber);
+    let url = API_BASE_URL+"venues/venues?pageNumber="+pageNumber;
+    let venueList;
+    if(isFilterOn){
+        url = API_BASE_URL+"venues/resource/search?pageNumber="+pageNumber;
+        venueList = await getFilteredVenue(url,searchData);
+    }else{
+        venueList = await getVenueList(url);
+    }
+    displayVenues(venueList);
+
 }
